@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+/* ── Viking Dark Design Tokens ───────────────────────── */
+:root {
+  /* Backgrounds */
+  --bg-void:         #060402;
+  --bg-deep:         #0D0A06;
+  --bg-dark:         #141009;
+  --bg-card:         #1C1510;
+  --bg-card-2:       #231A0C;
+  --bg-elevated:     #2A1F0F;
+  --bg-modal:        #100D08;
+
+  /* Brand / Ember */
+  --ember-core:      #FF6A00;
+  --ember-bright:    #FF8C2A;
+  --ember-glow:      #FFB347;
+  --ember-dim:       #CC4A00;
+  --ember-deep:      #8B2F00;
+  --ember-blood:     #C0392B;
+
+  /* Text / Ash */
+  --ash-pure:        #F0DDB8;
+  --ash-mid:         #C4A46A;
+  --ash-dark:        #8A7048;
+  --ash-muted:       #604830;
+
+  /* Surfaces */
+  --border-dim:      rgba(255, 130, 40, 0.10);
+  --border-mid:      rgba(255, 106, 0, 0.22);
+  --border-active:   rgba(255, 106, 0, 0.55);
+  --glow-surface:    rgba(255, 106, 0, 0.07);
+
+  /* Utility */
+  --wa-green:        #25D366;
+  --danger:          #E03232;
+
+  /* Shadows */
+  --shadow-ember:    0 4px 20px rgba(255,106,0,.18), 0 1px 4px rgba(0,0,0,.5);
+  --shadow-card:     0 2px 14px rgba(0,0,0,.45), 0 1px 3px rgba(0,0,0,.6);
+  --shadow-modal:    0 -20px 60px rgba(0,0,0,.7);
+  --shadow-btn:      0 4px 18px rgba(255,106,0,.30), 0 1px 4px rgba(0,0,0,.4);
+
+  --ease: cubic-bezier(.2, .8, .2, 1);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Rubik', 'Tajawal', 'Cairo', system-ui, sans-serif;
+  background: var(--bg-void);
+  color: var(--ash-pure);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html { scroll-behavior: smooth; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 3px; height: 3px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--ember-dim); border-radius: 2px; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Core Animations (preserved names) ────────────────── */
+@keyframes pop {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.35); }
+}
+.pop { animation: pop 0.22s ease-out; }
+
+@keyframes slideUp {
+  from { transform: translateY(24px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.slide-up { animation: slideUp 0.38s var(--ease); }
+
+@keyframes sheetUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+.sheet-up { animation: sheetUp 0.28s var(--ease); }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.35s ease-out both; }
+.fade-in:nth-child(1) { animation-delay: 0.04s; }
+.fade-in:nth-child(2) { animation-delay: 0.09s; }
+.fade-in:nth-child(3) { animation-delay: 0.14s; }
+.fade-in:nth-child(4) { animation-delay: 0.19s; }
+.fade-in:nth-child(5) { animation-delay: 0.24s; }
+.fade-in:nth-child(6) { animation-delay: 0.29s; }
+
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.backdrop-in { animation: backdropIn 0.22s ease; }
+
+@keyframes waPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(37, 211, 102, 0); }
+}
+.wa-pulse { animation: waPulse 2s ease-in-out infinite; }
+
+@keyframes splashBounce {
+  0%, 100% { transform: translateY(0);    opacity: 0.3; }
+  50%       { transform: translateY(-6px); opacity: 1;   }
+}
+
+/* ── Viking Exclusive Animations ──────────────────────── */
+@keyframes emberFloat {
+  0%   { transform: translateY(0) translateX(0) scale(1);       opacity: 0.85; }
+  30%  { transform: translateY(-16px) translateX(3px) scale(.8); opacity: 0.55; }
+  65%  { transform: translateY(-34px) translateX(-4px) scale(.55);opacity: 0.28; }
+  100% { transform: translateY(-52px) translateX(2px) scale(.2); opacity: 0; }
+}
+
+@keyframes smokeRise {
+  0%   { transform: translateY(0) scale(1) translateX(0);   opacity: 0.12; }
+  50%  { transform: translateY(-28px) scale(1.5) translateX(6px); opacity: 0.06; }
+  100% { transform: translateY(-60px) scale(2.2) translateX(-4px); opacity: 0; }
+}
+
+@keyframes emberPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(255,106,0,.25), 0 0 22px rgba(255,106,0,.10); }
+  50%       { box-shadow: 0 0 18px rgba(255,106,0,.45), 0 0 38px rgba(255,106,0,.20); }
+}
+
+@keyframes flameShimmer {
+  0%, 100% { opacity: 1;    transform: scaleY(1); }
+  33%       { opacity: 0.88; transform: scaleY(1.03); }
+  66%       { opacity: 0.94; transform: scaleY(0.97); }
+}
+
+@keyframes vignetteBreath {
+  0%, 100% { opacity: 0.55; }
+  50%       { opacity: 0.72; }
+}
+
+@keyframes headerReveal {
+  from { opacity: 0; transform: scale(1.04); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes nameReveal {
+  from { opacity: 0; transform: translateY(10px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── Card hover ───────────────────────────────────────── */
+.item-card {
+  transition: transform 150ms var(--ease), box-shadow 150ms var(--ease);
+}
+.item-card:active { transform: scale(.99); }
+.item-card:hover  { box-shadow: 0 4px 22px rgba(255,106,0,.12), 0 1px 3px rgba(0,0,0,.5); }
+
+/* ── Input focus ──────────────────────────────────────── */
+.viking-input:focus {
+  outline: none;
+  border-color: rgba(255,106,0,.45) !important;
+  box-shadow: 0 0 0 2.5px rgba(255,106,0,.12);
+}
