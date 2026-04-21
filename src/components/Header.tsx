@@ -62,7 +62,7 @@ export default function Header({ restaurant, cartCount, onCartClick }: Props) {
 
         {/* Dark cinematic vignette — radial */}
         <div style={{
-          position: 'absolute', inset: 0,
+          position: 'absolute', top: 0, right: 0, bottom: 0, left: 0,
           background: 'radial-gradient(ellipse 80% 80% at 50% 40%, rgba(0,0,0,0) 20%, rgba(6,4,2,0.72) 100%)',
           animation: 'vignetteBreath 4s ease-in-out infinite',
           pointerEvents: 'none',
@@ -70,7 +70,7 @@ export default function Header({ restaurant, cartCount, onCartClick }: Props) {
 
         {/* Left edge safe-margin gradient */}
         <div style={{
-          position: 'absolute', inset: 0,
+          position: 'absolute', top: 0, right: 0, bottom: 0, left: 0,
           background: 'linear-gradient(to right, rgba(6,4,2,0.55) 0%, transparent 18%, transparent 82%, rgba(6,4,2,0.55) 100%)',
           pointerEvents: 'none',
         }} />
