@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { PublicMenuResponse, OrderPayload, OrderResult, ReviewCreate, ReviewsListResponse } from '@/types';
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const BASE_URL ='https://api.orionsmenu.com';
 
 const client = axios.create({ baseURL: BASE_URL });
 
